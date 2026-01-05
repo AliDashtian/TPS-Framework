@@ -1,4 +1,4 @@
-using Cinemachine;
+using Unity.Cinemachine;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -8,7 +8,7 @@ public class TPCameraSettingSO : ScriptableObject
 
     [Header("Cinemachine")]
     [Tooltip("The Cinemachine Virtual Camera that follows the active character. (Optional but recommended)")]
-    public CinemachineVirtualCamera CinemachineVCam;
+    public CinemachineCamera CinemachineVCam;
 
     [Tooltip("How far in degrees can you move the camera up")]
     public float LookSensivity = 70.0f;

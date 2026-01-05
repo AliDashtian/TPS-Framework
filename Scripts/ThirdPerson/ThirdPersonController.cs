@@ -1,4 +1,4 @@
-using Cinemachine;
+using Unity.Cinemachine;
 using UnityEngine;
 using System.Collections;
 
@@ -15,7 +15,7 @@ public class ThirdPersonController : MonoBehaviour
 
     [Header("Cinemachine")]
     [Tooltip("The Cinemachine Virtual Camera that follows the active character. (Optional but recommended)")]
-    public CinemachineVirtualCamera CinemachineVCam;
+    public CinemachineCamera CinemachineVCam;
 
     [Tooltip("How far in degrees can you move the camera up")]
     public float LookSensivity = 70.0f; 
@@ -120,12 +120,12 @@ public class ThirdPersonController : MonoBehaviour
     IEnumerator ChangeFOVCoroutine(int targetFOV, float duration)
     {
         float time = 0;
-        float initFOV = CinemachineVCam.m_Lens.FieldOfView;
+        float initFOV = CinemachineVCam.Lens.FieldOfView;
 
         while (time <= duration)
         {
             time += Time.deltaTime;
-            CinemachineVCam.m_Lens.FieldOfView = Mathf.Lerp(initFOV, targetFOV, time / duration);
+            CinemachineVCam.Lens.FieldOfView = Mathf.Lerp(initFOV, targetFOV, time / duration);
 
             yield return null;
         }

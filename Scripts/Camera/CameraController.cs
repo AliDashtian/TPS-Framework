@@ -1,14 +1,14 @@
-using Cinemachine;
+using Unity.Cinemachine;
 using System.Collections;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    private CinemachineVirtualCamera virtualCamera;
+    private CinemachineCamera virtualCamera;
 
     private void Start()
     {
-        virtualCamera = GetComponent<CinemachineVirtualCamera>();
+        virtualCamera = GetComponent<CinemachineCamera>();
         if (virtualCamera == null)
         {
             Debug.LogError("CinemachineVirtualCamera component not found on this GameObject.");

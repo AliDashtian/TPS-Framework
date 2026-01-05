@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f66cad92d5a6e254996d262ea0452788, type: 3}
+  m_Name: CopLoadout
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponInventorySO
+  MainWeapon: {fileID: 4730224004658303182, guid: f123d5da81643a849b73d98ffc92ef48, type: 3}
+  SecondaryWeapon: {fileID: 0}

@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2b4459aa7605844b9b8f88eb356186c, type: 3}
+  m_Name: M4A4
+  m_EditorClassIdentifier: 
+  Name: M4A4
+  FireType: 1
+  DamageType: 0
+  HolsterType: 1
+  PhysicalMaterialData: {fileID: 11400000, guid: eb494bbfd1c6c0e42baf2d898c76c242, type: 2}
+  Damage: 1
+  FireRate: 5
+  FireRange: 1000
+  ZoomSpeed: 0.1
+  ReloadDuration: 2
+  ImpactForce: 2
+  ZoomFOV: 40
+  PouchCapacity: 90
+  MagCapacity: 30
+  ShootableLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  WeaponAttachmentPositions:
+    InHandPos: {x: 0.17243372, y: -0.26459965, z: 0.0032029003}
+    InHandRot: {x: 270.80185, y: -0.00024395275, z: 95.170715}
+    InHolsterPos: {x: 0.32, y: 0.431, z: -0.036}
+    InHolsterRot: {x: 16.844578, y: 273.6964, z: 182.70224}
+  OverrideController: {fileID: 22100000, guid: f273fb41022b0b740a3f264c441c05e4, type: 2}
+  EquipAnimName: EquipRifle
+  UnequipAnimName: UnequipRifle
+  CrosshairSprite: {fileID: 0}
+  WeaponSprite: {fileID: 917937430, guid: beac135820b158349a26ab79bd2b1ec5, type: 3}
+  MuzzlePS: {fileID: 198000012944515248, guid: 9defeac88977c0d448aa4541073ee9e4, type: 3}
+  FireSound: {fileID: 0}

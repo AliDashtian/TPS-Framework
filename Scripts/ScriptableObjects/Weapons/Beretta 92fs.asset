@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2b4459aa7605844b9b8f88eb356186c, type: 3}
+  m_Name: Beretta 92fs
+  m_EditorClassIdentifier: Assembly-CSharp::RaycastWeapon
+  Name: Beretta 92fs
+  FireType: 0
+  DamageType: 0
+  HolsterType: 2
+  PhysicalMaterialData: {fileID: 11400000, guid: eb494bbfd1c6c0e42baf2d898c76c242, type: 2}
+  Damage: 1
+  FireRate: 5
+  FireRange: 1000
+  ZoomSpeed: 0.1
+  ReloadDuration: 2
+  ImpactForce: 5
+  ZoomFOV: 40
+  PouchCapacity: 90
+  MagCapacity: 30
+  ShootableLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  WeaponAttachmentPositions:
+    InHandPos: {x: -0.0362, y: 0.1303, z: 0.046}
+    InHandRot: {x: 342.9017, y: 181.7005, z: 264.23444}
+    InHolsterPos: {x: 0, y: 0, z: 0}
+    InHolsterRot: {x: 0, y: 0, z: 0}
+  OverrideController: {fileID: 22100000, guid: 5dc318c1a6f052a4ba265dc890164abf, type: 2}
+  EquipAnimName: EquipPistol
+  UnequipAnimName: UnequipPistol
+  CrosshairSprite: {fileID: 0}
+  WeaponSprite: {fileID: 0}
+  MuzzlePS: {fileID: 0}
+  FireSound: {fileID: 0}

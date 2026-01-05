@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3b4e5331876320489e0ecbb217ea6cb, type: 3}
-  m_Name: Player2MaxHealth
-  m_EditorClassIdentifier: Assembly-CSharp::FloatVariable
-  Value: 1000
-  SaveValue: 0
-  Key: Player2MaxHealth
-  DefaultValue: 100
+  m_Script: {fileID: 11500000, guid: d56c422de7d55a54dbbb759508d25ec5, type: 3}
+  m_Name: Arm
+  m_EditorClassIdentifier: Assembly-CSharp::BodyPartSO
+  DamageMultiplier: 1

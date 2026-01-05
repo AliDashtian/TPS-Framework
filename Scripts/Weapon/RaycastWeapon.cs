@@ -20,7 +20,6 @@ public class RaycastWeapon : WeaponSO
         }
     }
 
-
     private void AddImpactForce(RaycastHit hit, WeaponSO weaponData)
     {
         if (hit.transform.TryGetComponent(out Rigidbody rb))

@@ -10,6 +10,8 @@ using System.Collections.Generic;
 /// </summary>
 public class Health : MonoBehaviour, IDamageable
 {
+    public List<BodyPartHitBox> BodyParts = new List<BodyPartHitBox>();
+
     /// <summary>
     /// Public getter for current health, fulfilling the IDamageable interface.
     /// </summary>
@@ -60,6 +62,8 @@ public class Health : MonoBehaviour, IDamageable
     {
         // Initialize health
         currentHealth.Value = maxHealth.Value;
+
+        BodyParts.AddRange(GetComponentsInChildren<BodyPartHitBox>());
     }
 
     /// <summary>
@@ -78,9 +82,10 @@ public class Health : MonoBehaviour, IDamageable
         }
 
         currentHealth.Value -= damageAmount;
-        CheckDamageStage();
 
         ClampCurrentHealth();
+
+        CheckDamageStage();
 
         // Broadcast the health changed event
         OnHealthChanged?.Invoke(currentHealth.Value, maxHealth.Value);

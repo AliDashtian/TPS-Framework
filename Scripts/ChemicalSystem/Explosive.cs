@@ -20,14 +20,14 @@ public class Explosive : MonoBehaviour
 
         foreach (Collider collider in colliders)
         {
-            if (collider.gameObject.TryGetComponent(out Rigidbody rb))
-            {
-                rb.AddExplosionForce(_impactForce, transform.position, _explosionRadius, 1f, ForceMode.Impulse);
-            }
-
             if (collider.gameObject.TryGetComponent(out IDamageable damageable))
             {
                 damageable.TakeDamage(_damage, DamageType.Explosion);
+            }
+
+            if (collider.gameObject.TryGetComponent(out Rigidbody rb))
+            {
+                rb.AddExplosionForce(_impactForce, transform.position, _explosionRadius, 1f, ForceMode.Impulse);
             }
         }
     }

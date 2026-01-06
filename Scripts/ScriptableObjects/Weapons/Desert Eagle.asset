@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Desert Eagle
   m_EditorClassIdentifier: Assembly-CSharp::RaycastWeapon
   Name: Desert Eagle
-  FireType: 0
+  FireType: 1
   DamageType: 0
   HolsterType: 2
   PhysicalMaterialData: {fileID: 11400000, guid: eb494bbfd1c6c0e42baf2d898c76c242, type: 2}
@@ -35,7 +35,9 @@ MonoBehaviour:
     InHolsterPos: {x: 0, y: 0, z: 0}
     InHolsterRot: {x: 0, y: 0, z: 0}
   OverrideController: {fileID: 22100000, guid: 5dc318c1a6f052a4ba265dc890164abf, type: 2}
+  EquipAnimName: 
+  UnequipAnimName: 
   CrosshairSprite: {fileID: 0}
   WeaponSprite: {fileID: 0}
-  MuzzlePS: {fileID: 0}
   FireSound: {fileID: 0}
+  MuzzlePS: {fileID: 0}

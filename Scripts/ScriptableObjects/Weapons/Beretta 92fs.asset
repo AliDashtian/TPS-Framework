@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Beretta 92fs
   m_EditorClassIdentifier: Assembly-CSharp::RaycastWeapon
   Name: Beretta 92fs
-  FireType: 0
+  FireType: 1
   DamageType: 0
   HolsterType: 2
   PhysicalMaterialData: {fileID: 11400000, guid: eb494bbfd1c6c0e42baf2d898c76c242, type: 2}
   Damage: 1
-  FireRate: 5
+  FireRate: 2
   FireRange: 1000
   ZoomSpeed: 0.1
   ReloadDuration: 2
@@ -39,5 +39,5 @@ MonoBehaviour:
   UnequipAnimName: UnequipPistol
   CrosshairSprite: {fileID: 0}
   WeaponSprite: {fileID: 0}
-  MuzzlePS: {fileID: 0}
   FireSound: {fileID: 0}
+  MuzzlePS: {fileID: 0}

@@ -9,5 +9,7 @@ AnimatorOverrideController:
   m_Name: Pistol OC
   m_Controller: {fileID: 9100000, guid: d9fcb51fcfc6f004c9c91e746bfe3599, type: 2}
   m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 137320496761e194289894290718de58, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 89c94658fee78fd4193cfb3fc9897ea9, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: 878a609ed928d474aade6e13190df15d, type: 2}
-    m_OverrideClip: {fileID: -203655887218126122, guid: 9c05da0386ca5604b955762c85e6568a, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: 6645d5cbb6e3530479601d8e77530088, type: 2}

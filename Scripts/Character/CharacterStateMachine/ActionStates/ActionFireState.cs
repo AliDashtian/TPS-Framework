@@ -13,7 +13,6 @@ public class ActionFireState : CharacterState
 
     public override void Update()
     {
-
         // Exit the fire state if we ran out of ammo while firing
         if (!baseCharacter.GetCurrentWeapon().HasAmmo())
         {
@@ -24,6 +23,7 @@ public class ActionFireState : CharacterState
     public override void Exit()
     {
         baseCharacter.GetCurrentWeapon().OnFire(false);
+        baseCharacter.OnWeaponFired?.Invoke(false);
         baseCharacter.Animator.SetBool(AnimationIDs.IsFiring, false);
     }
 }

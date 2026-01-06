@@ -10,7 +10,7 @@ public class BodyPartHitBox : MonoBehaviour, IDamageable
     [SerializeField]
     private BodyPartSO _bodyPartData;
 
-    [Tooltip("If should use this class's multiplier instead, will use this if BodyPartData is null")]
+    [Tooltip("Check if you want to use this class's multiplier instead, will use this if BodyPartData is null")]
     [SerializeField]
     private bool overrideDamageMultiplier = false;
 

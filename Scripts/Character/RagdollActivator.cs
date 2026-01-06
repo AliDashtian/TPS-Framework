@@ -16,12 +16,22 @@ public class RagdollActivator : MonoBehaviour
         {
             animator.enabled = !value;
         }
-        Debug.Log("YOYOYO");
 
         foreach (Rigidbody rb in _bodies)
         {
             rb.useGravity = value;
             rb.isKinematic = !value;
+        }
+
+        Invoke(nameof(SleepPhyscis), 3f);
+    }
+
+    void SleepPhyscis()
+    {
+        foreach (Rigidbody rb in _bodies)
+        {
+            rb.useGravity = false;
+            rb.isKinematic = true;
         }
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -9,14 +10,36 @@ public class PlayerRuntimeSet : RuntimeSet<PlayerCharacter>
 
     public event Action OnCharacterSwitched;
 
-    private int _activeCharacterId;
+    private Dictionary<int, PlayerCharacter> _PlayerSet = new Dictionary<int, PlayerCharacter>();
+
+    private int _activePlayerId;
 
     public void SetInitialCharacterById(int initialPlayerId)
     {
-        _activeCharacterId = initialPlayerId;
-        // Pick the first player that has a matching Id with selected Id and set it as ActivePlayer
-        PlayerCharacter activeCharacter = Items.Where(p => p.CharacterData.Id == _activeCharacterId).ToList()[0];
+        MapPlayerSet();
+
+        _activePlayerId = initialPlayerId;
+        PlayerCharacter activeCharacter = GetPlayerById(_activePlayerId);
+
         SetActivePlayer(activeCharacter);
+    }
+
+    private void MapPlayerSet()
+    {
+        foreach (PlayerCharacter player in Items)
+        {
+            _PlayerSet.Add(player.CharacterData.Id, player);
+        }
+    }
+
+    private PlayerCharacter GetPlayerById(int id)
+    {
+        if (_PlayerSet.TryGetValue(id, out PlayerCharacter playerCharacter))
+        {
+            return playerCharacter;
+        }
+
+        return playerCharacter;
     }
 
     /// <summary>
@@ -46,7 +69,7 @@ public class PlayerRuntimeSet : RuntimeSet<PlayerCharacter>
         {
             if (Items[i] == ActivePlayer)
             {
-                _activeCharacterId = i;
+                _activePlayerId = i;
                 break;
             }
         }
@@ -64,8 +87,9 @@ public class PlayerRuntimeSet : RuntimeSet<PlayerCharacter>
             return;
         }
 
-        _activeCharacterId = (_activeCharacterId + 1) % Count();
-        SetActivePlayer(Items[_activeCharacterId]);
+        _activePlayerId = (_activePlayerId + 1) % Count();
+
+        SetActivePlayer(GetPlayerById(_activePlayerId));
         OnCharacterSwitched?.Invoke();
     }
 

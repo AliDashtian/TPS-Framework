@@ -32,6 +32,7 @@ public class Weapon : MonoBehaviour
     [SerializeField]
     private Transform _muzzleTransform;
 
+    private BaseCharacter _ownerCharacter;
     private AudioSource _audioSource;
 
     private float _nextFireTime;
@@ -55,6 +56,8 @@ public class Weapon : MonoBehaviour
 
         CurrentPouchAmmo = _maxPouchAmmo;
         CurrentMagAmmo = _magCapacity;
+
+        _ownerCharacter = GetComponentInParent<BaseCharacter>();
     }
 
     private void FixedUpdate()
@@ -151,6 +154,8 @@ public class Weapon : MonoBehaviour
         {
             _audioSource.PlayOneShot(WeaponData.FireSound);
         }
+
+        _ownerCharacter.Animator.SetTrigger(AnimationIDs.Fire);
     }
 
     public void ApplyRecoil(ref float yaw, ref float pitch)

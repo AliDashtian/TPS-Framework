@@ -1446,6 +1446,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4866468985855638006, guid: 8756daaa89fadbc45a15de880f6c0015, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5225032029063101820, guid: 8756daaa89fadbc45a15de880f6c0015, type: 3}
       propertyPath: Target
       value: 
@@ -2139,6 +2143,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4866468985855638006, guid: 8756daaa89fadbc45a15de880f6c0015, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5225032029063101820, guid: 8756daaa89fadbc45a15de880f6c0015, type: 3}
       propertyPath: Target
       value: 
@@ -2211,6 +2219,10 @@ PrefabInstance:
     - target: {fileID: 4866468985855638006, guid: 8756daaa89fadbc45a15de880f6c0015, type: 3}
       propertyPath: m_Name
       value: Enemy (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4866468985855638006, guid: 8756daaa89fadbc45a15de880f6c0015, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5225032029063101820, guid: 8756daaa89fadbc45a15de880f6c0015, type: 3}
       propertyPath: Target
@@ -2635,6 +2647,10 @@ PrefabInstance:
     - target: {fileID: 5581777910173829429, guid: eeb3d06d654861d45804f7dee1ff25d6, type: 3}
       propertyPath: m_Name
       value: X Bot Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 5581777910173829429, guid: eeb3d06d654861d45804f7dee1ff25d6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7227923026220833040, guid: eeb3d06d654861d45804f7dee1ff25d6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4254,6 +4270,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 4866468985855638006, guid: 8756daaa89fadbc45a15de880f6c0015, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5225032029063101820, guid: 8756daaa89fadbc45a15de880f6c0015, type: 3}
       propertyPath: Target
       value: 
@@ -4353,16 +4373,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5482636914366821069, guid: 5f07e15fd311a1e479f8074757b0a6f7, type: 3}
       propertyPath: InitialStance
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6027338259858610764, guid: 5f07e15fd311a1e479f8074757b0a6f7, type: 3}
       propertyPath: m_WarningMessage
-      value: "\nBinding warning: Some generic clip(s) animate transforms that are
-        already bound by a Humanoid avatar. These transforms can only be changed
-        by Humanoid clips.\n\tTransform 'mixamorig:Spine1'\n\tTransform 'mixamorig:Hips'\n\tTransform
-        'mixamorig:Spine2'\n\tTransform 'mixamorig:Spine1'\n\tTransform 'mixamorig:Hips'\n\tTransform
-        'mixamorig:Spine2'\n\tTransform 'mixamorig:Spine1'\n\tTransform 'mixamorig:Hips'\n\tTransform
-        'mixamorig:Spine2'"
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8164469169134926057, guid: 5f07e15fd311a1e479f8074757b0a6f7, type: 3}
       propertyPath: m_Data.m_SourceObjects.m_Item0.transform

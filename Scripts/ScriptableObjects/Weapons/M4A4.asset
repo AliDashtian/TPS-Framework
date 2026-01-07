@@ -39,5 +39,5 @@ MonoBehaviour:
   UnequipAnimName: UnequipRifle
   CrosshairSprite: {fileID: 0}
   WeaponSprite: {fileID: 917937430, guid: beac135820b158349a26ab79bd2b1ec5, type: 3}
-  MuzzlePS: {fileID: 198000012944515248, guid: 9defeac88977c0d448aa4541073ee9e4, type: 3}
   FireSound: {fileID: 0}
+  MuzzlePS: {fileID: 198000012944515248, guid: 9defeac88977c0d448aa4541073ee9e4, type: 3}

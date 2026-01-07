@@ -23,6 +23,7 @@ public abstract class BaseCharacter : MonoBehaviour
     /// </summary>
     //public StateMachine StanceStateMachine { get; private set; }
 
+    public ActionAimState AimState;
     public ActionFireState FireState;
     public ActionIdleState IdleState;
     public ActionReloadState ReloadState;
@@ -50,6 +51,7 @@ public abstract class BaseCharacter : MonoBehaviour
         ActionStateMachine = new StateMachine();
         //StanceStateMachine = new StateMachine();
 
+        AimState = new ActionAimState(this, ActionStateMachine);
         FireState = new ActionFireState(this, ActionStateMachine);
         IdleState = new ActionIdleState(this, ActionStateMachine);
         ReloadState = new ActionReloadState(this, ActionStateMachine);
@@ -77,25 +79,29 @@ public abstract class BaseCharacter : MonoBehaviour
     /// Start or stop firing based on input parameter
     /// </summary>
     /// <param name="newFire"> if true start firing, if false stop firing</param>
-    public virtual void Fire(bool newFire)
+    public virtual void AimOrFire(bool newFire)
     {
         //pass the input to the current state, or decide to switch states
         if (newFire)
         {
-            // Only transition to firing if we are Idle (or add logic to interrupt reload)
+            // Only transition to Aiming if we are Idle (or add logic to interrupt reload)
             if (ActionStateMachine.CurrentState == IdleState && GetCurrentWeapon().HasAmmo())
             {
-                ActionStateMachine.ChangeState(FireState);
-                OnWeaponFired?.Invoke(true);
+                // then we'll change to FireState based on weapon fire type
+                ActionStateMachine.ChangeState(AimState);
             }
         }
         else
         {
-            // If we are firing, go back to idle
+            // If we are firing, go back to idle (For automatic weapons)
             if (ActionStateMachine.CurrentState == FireState)
             {
                 ActionStateMachine.ChangeState(IdleState);
-                OnWeaponFired?.Invoke(false);
+            }
+            // If we are Aiming, Fire once (For SingleShot weapons)
+            else if (ActionStateMachine.CurrentState == AimState && GetCurrentWeapon().HasAmmo())
+            {
+                ActionStateMachine.ChangeState(FireState);
             }
         }
     }

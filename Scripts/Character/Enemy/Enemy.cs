@@ -41,9 +41,9 @@ public class Enemy : BaseCharacter
         while (true)
         {
             yield return new WaitForSeconds(FireDelay);
-            Fire(true);
+            AimOrFire(true);
             yield return new WaitForSeconds(3f);
-            Fire(false);
+            AimOrFire(false);
             yield return new WaitForSeconds(0.2f);
             AttemptReload();
             yield return null;

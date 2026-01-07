@@ -18,7 +18,7 @@ MonoBehaviour:
   HolsterType: 2
   PhysicalMaterialData: {fileID: 11400000, guid: eb494bbfd1c6c0e42baf2d898c76c242, type: 2}
   Damage: 1
-  FireRate: 5
+  FireRate: 1
   FireRange: 1000
   ZoomSpeed: 0.1
   ReloadDuration: 2
@@ -34,10 +34,13 @@ MonoBehaviour:
     InHandRot: {x: 0, y: 0, z: 0}
     InHolsterPos: {x: 0, y: 0, z: 0}
     InHolsterRot: {x: 0, y: 0, z: 0}
+  OverrideController: {fileID: 22100000, guid: 9228e2baf0401bb4c8dab8a1a550aa9d, type: 2}
+  EquipAnimName: EquipPistol
+  UnequipAnimName: UnequipPistol
   CrosshairSprite: {fileID: 0}
   WeaponSprite: {fileID: 0}
-  MuzzlePS: {fileID: 0}
   FireSound: {fileID: 0}
+  MuzzlePS: {fileID: 0}
   projectilePrefab: {fileID: 6140328357206681956, guid: 57852165d4c98f949ae463cf129e56b2, type: 3}
   launchForce: 8
   explosionRadius: 20

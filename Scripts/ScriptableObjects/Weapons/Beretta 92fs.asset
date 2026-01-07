@@ -18,7 +18,7 @@ MonoBehaviour:
   HolsterType: 2
   PhysicalMaterialData: {fileID: 11400000, guid: eb494bbfd1c6c0e42baf2d898c76c242, type: 2}
   Damage: 1
-  FireRate: 2
+  FireRate: 1.5
   FireRange: 1000
   ZoomSpeed: 0.1
   ReloadDuration: 2

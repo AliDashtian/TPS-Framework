@@ -8,6 +8,8 @@ public static class AnimationIDs
     // --- ACTIONS ---
     public static int IsIdle = Animator.StringToHash("IsIdle");
     public static int IsFiring = Animator.StringToHash("IsFiring");
+    public static int Fire = Animator.StringToHash("Fire");
+    public static int IsAiming = Animator.StringToHash("IsAiming");
     public static int IsReloading = Animator.StringToHash("IsReloading");
     public static int IsSwapping = Animator.StringToHash("IsSwapping");
 

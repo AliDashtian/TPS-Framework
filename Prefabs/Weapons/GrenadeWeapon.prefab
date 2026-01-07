@@ -106,4 +106,4 @@ MonoBehaviour:
   CurrentPouchAmmo: 0
   CurrentMagAmmo: 0
   isFiring: 0
-  muzzleTransform: {fileID: 3801209396178242274}
+  _muzzleTransform: {fileID: 3801209396178242274}

@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.169652, y: 20.94169, z: -82.87769}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -152,8 +152,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf649b7a52cb97641b20580e41376fee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _damage: 100
+  _impactForce: 20
+  _explosionRadius: 5
   lifeTime: 3
-  launchForce: 8
   launchDirectionOffset: {x: 0, y: 1, z: 0}
   destroyOnImpact: 0
   impactEffect: {fileID: 0}

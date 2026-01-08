@@ -9,7 +9,7 @@ public class PlayerRuntimeObject : RuntimeObject<PlayerCharacter>
     /// <param name="newFire"></param>
     public void Fire(bool newFire)
     {
-        Object.AimOrFire(newFire);
+        Object.Fire(newFire);
     }
 
     public void Reload()

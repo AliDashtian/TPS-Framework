@@ -22,10 +22,10 @@ MonoBehaviour:
   FireRange: 1000
   ZoomSpeed: 0.1
   ReloadDuration: 2
-  ImpactForce: 20
+  ImpactForce: 40
   ZoomFOV: 40
   PouchCapacity: 3
-  MagCapacity: 1
+  MagCapacity: 3
   ShootableLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -43,4 +43,4 @@ MonoBehaviour:
   MuzzlePS: {fileID: 0}
   projectilePrefab: {fileID: 6140328357206681956, guid: 57852165d4c98f949ae463cf129e56b2, type: 3}
   launchForce: 8
-  explosionRadius: 20
+  explosionRadius: 8

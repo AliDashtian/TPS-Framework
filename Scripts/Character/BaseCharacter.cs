@@ -10,7 +10,8 @@ public abstract class BaseCharacter : MonoBehaviour
 
     public Action OnReload;
     public Action OnWeaponSwapped;
-    public Action<bool> OnWeaponFired;
+    //public Action<bool> OnWeaponFired;
+    public Action<bool> OnWeaponAimed;
 
     #region State Machine
 
@@ -23,8 +24,8 @@ public abstract class BaseCharacter : MonoBehaviour
     /// </summary>
     //public StateMachine StanceStateMachine { get; private set; }
 
-    public ActionAimState AimState;
-    public ActionFireState FireState;
+    //public ActionAimState AimState;
+    public ActionAimFireState AimFireState;
     public ActionIdleState IdleState;
     public ActionReloadState ReloadState;
     public ActionSwapWeaponState SwapState;
@@ -37,6 +38,8 @@ public abstract class BaseCharacter : MonoBehaviour
     #endregion State Machine
 
     protected WeaponInventory weaponInventory;
+
+    private bool _isAiming;
 
     protected virtual void Awake()
     {
@@ -51,8 +54,8 @@ public abstract class BaseCharacter : MonoBehaviour
         ActionStateMachine = new StateMachine();
         //StanceStateMachine = new StateMachine();
 
-        AimState = new ActionAimState(this, ActionStateMachine);
-        FireState = new ActionFireState(this, ActionStateMachine);
+        //AimState = new ActionAimState(this, ActionStateMachine);
+        AimFireState = new ActionAimFireState(this, ActionStateMachine);
         IdleState = new ActionIdleState(this, ActionStateMachine);
         ReloadState = new ActionReloadState(this, ActionStateMachine);
         SwapState = new ActionSwapWeaponState(this, ActionStateMachine);
@@ -79,7 +82,7 @@ public abstract class BaseCharacter : MonoBehaviour
     /// Start or stop firing based on input parameter
     /// </summary>
     /// <param name="newFire"> if true start firing, if false stop firing</param>
-    public virtual void AimOrFire(bool newFire)
+    public virtual void Fire(bool newFire)
     {
         //pass the input to the current state, or decide to switch states
         if (newFire)
@@ -88,20 +91,15 @@ public abstract class BaseCharacter : MonoBehaviour
             if (ActionStateMachine.CurrentState == IdleState && GetCurrentWeapon().HasAmmo())
             {
                 // then we'll change to FireState based on weapon fire type
-                ActionStateMachine.ChangeState(AimState);
+                ActionStateMachine.ChangeState(AimFireState);
             }
         }
         else
         {
             // If we are firing, go back to idle (For automatic weapons)
-            if (ActionStateMachine.CurrentState == FireState)
+            if (ActionStateMachine.CurrentState == AimFireState)
             {
                 ActionStateMachine.ChangeState(IdleState);
-            }
-            // If we are Aiming, Fire once (For SingleShot weapons)
-            else if (ActionStateMachine.CurrentState == AimState && GetCurrentWeapon().HasAmmo())
-            {
-                ActionStateMachine.ChangeState(FireState);
             }
         }
     }

@@ -56,7 +56,7 @@ public class ThirdPersonController : MonoBehaviour
         // Subscribe Zoom to all of the Players
         foreach (PlayerCharacter player in PlayerRuntimeSet.Items)
         {
-            player.OnWeaponFired += Zoom;
+            player.OnWeaponAimed += Zoom;
         }
 
         ChangeFollowTarget();

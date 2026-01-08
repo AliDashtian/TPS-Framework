@@ -17,7 +17,7 @@ MonoBehaviour:
   DamageType: 1
   HolsterType: 2
   PhysicalMaterialData: {fileID: 11400000, guid: eb494bbfd1c6c0e42baf2d898c76c242, type: 2}
-  Damage: 1
+  Damage: 100
   FireRate: 1
   FireRange: 1000
   ZoomSpeed: 0.1
@@ -44,5 +44,5 @@ MonoBehaviour:
   DisableMeshIfNoAmmo: 1
   projectilePrefab: {fileID: 6140328357206681956, guid: 57852165d4c98f949ae463cf129e56b2, type: 3}
   launchForce: 15
-  explosionRadius: 8
+  explosionRadius: 4
   ProjectileSpawnDelay: 200

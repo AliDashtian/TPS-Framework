@@ -5,9 +5,9 @@ using UnityEngine;
 public class Projectile : Explosive
 {
     [Header("Settings")]
-    [SerializeField] private float lifeTime = 5f;
+    [SerializeField] private float _reactDelay = 5f;
     [SerializeField] private float _launchUpwardForce;
-    [SerializeField] private bool destroyOnImpact = true;
+    [SerializeField] private bool _destroyOnImpact = true;
 
     private Rigidbody rb;
 
@@ -28,8 +28,9 @@ public class Projectile : Explosive
         gameObject.transform.forward = Camera.main.transform.forward;
 
         LaunchProjectile(launchForce);
-        // Destroy the projectile after its lifetime expires
-        Destroy(gameObject, lifeTime);
+
+        // react after delay duration
+        Invoke(nameof(React), _reactDelay);
     }
 
     private void LaunchProjectile(float launchForce)
@@ -57,14 +58,9 @@ public class Projectile : Explosive
         rb.AddForce(forceToAdd, ForceMode.Impulse);
     }
 
-    private void OnDestroy()
-    {
-        React();
-    }
-
     private void OnCollisionEnter(Collision collision)
     {
-        if (!destroyOnImpact) return;
+        if (!_destroyOnImpact) return;
 
         Destroy(gameObject);
     }

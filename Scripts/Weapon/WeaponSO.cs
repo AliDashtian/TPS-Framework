@@ -37,8 +37,9 @@ public abstract class WeaponSO : ScriptableObject
     public Sprite WeaponSprite;
 
     public AudioClip FireSound;
-
     public ParticleSystem MuzzlePS;
+
+    public bool DisableMeshIfNoAmmo;
 
     public abstract void Fire(Weapon weapon);
 }

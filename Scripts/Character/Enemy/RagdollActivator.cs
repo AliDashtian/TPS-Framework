@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class RagdollActivator : MonoBehaviour
 {
+    [SerializeField]
+    private float PhysicsSleepDelay = 5f;
+
     private List<Rigidbody> _bodies = new();
 
     private void Start()
@@ -23,7 +26,7 @@ public class RagdollActivator : MonoBehaviour
             rb.isKinematic = !value;
         }
 
-        Invoke(nameof(SleepPhyscis), 3f);
+        Invoke(nameof(SleepPhyscis), PhysicsSleepDelay);
     }
 
     void SleepPhyscis()

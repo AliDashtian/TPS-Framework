@@ -120,6 +120,12 @@ public class Weapon : MonoBehaviour
             PlayFireEffects();
             CurrentMagAmmo--;
         }
+
+        // Turn off the mesh if we don't have ammo, used for throwables like Grenade
+        if (WeaponData.DisableMeshIfNoAmmo && !HasAmmo())
+        {
+            SetMeshEnabled(false);
+        }
     }
 
     public void Reload()
@@ -183,5 +189,10 @@ public class Weapon : MonoBehaviour
     {
         int ShotsFired = _magCapacity - CurrentMagAmmo;
         return ShotsFired;
+    }
+
+    void SetMeshEnabled(bool enable)
+    {
+        GetComponent<MeshRenderer>().enabled = enable;
     }
 }

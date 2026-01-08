@@ -1,4 +1,6 @@
 
+using Cysharp.Threading.Tasks;
+
 /// <summary>
 /// In this game mechainc, we don't have a separate state for Aiming
 /// Aim and fire both are tied to a single button
@@ -26,6 +28,20 @@ public class ActionAimFireState : CharacterState
     public override void Exit()
     {
         baseCharacter.GetCurrentWeapon().OnFire(false);
+        if (baseCharacter.GetCurrentWeapon().WeaponData.FireType == WeaponFireType.SingleShot)
+        {
+            _ = ExitWithDelay(300);
+        }
+        else
+        {
+            _ = ExitWithDelay(0);
+        }
+    }
+
+    private async UniTask ExitWithDelay(int delay)
+    {
+        await UniTask.Delay(delay);
+
         baseCharacter.Animator.SetBool(AnimationIDs.IsAiming, false);
         baseCharacter.OnWeaponAimed?.Invoke(false);
     }

@@ -6,6 +6,8 @@ public class Explosive : MonoBehaviour
     [SerializeField] internal float _impactForce = 20f;
     [SerializeField] internal float _explosionRadius = 20f;
 
+    [SerializeField] private ParticleSystem _impactEffect;
+
     private void Awake()
     {
         if (TryGetComponent(out Health health))
@@ -29,6 +31,17 @@ public class Explosive : MonoBehaviour
             {
                 rb.AddExplosionForce(_impactForce, transform.position, _explosionRadius, 1f, ForceMode.Impulse);
             }
+        }
+
+        PlayImpactEffect();
+    }
+
+    protected void PlayImpactEffect()
+    {
+        // Play impact effect
+        if (_impactEffect != null)
+        {
+            Instantiate(_impactEffect.gameObject, transform.position, Quaternion.identity);
         }
     }
 }

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Beretta 92fs
   m_EditorClassIdentifier: Assembly-CSharp::RaycastWeapon
   Name: Beretta 92fs
-  FireType: 1
+  FireType: 0
   DamageType: 0
   HolsterType: 2
   PhysicalMaterialData: {fileID: 11400000, guid: eb494bbfd1c6c0e42baf2d898c76c242, type: 2}

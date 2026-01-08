@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "ProjectileWeapon", menuName = "Scriptable Objects/Weapon/Projectile Weapon")]
@@ -13,6 +14,9 @@ public class ProjectileWeapon : WeaponSO
     [Tooltip("Radius of explosion of the projectile.")]
     [SerializeField] private float explosionRadius = 20f;
 
+    [Tooltip("Projectile Spawn Delay in miliseconds")]
+    [SerializeField] private int ProjectileSpawnDelay = 200;
+
     public override void Fire(Weapon weapon)
     {
         if (projectilePrefab == null)
@@ -21,8 +25,15 @@ public class ProjectileWeapon : WeaponSO
             return;
         }
 
+        _ = InstantiateProjectileWithDelay(weapon, ProjectileSpawnDelay);
+    }
+
+    private async UniTask InstantiateProjectileWithDelay(Weapon weapon, int delay)
+    {
+        await UniTask.Delay(delay);
+
         // Instantiate the projectile at the muzzle position
         Projectile projectile = Instantiate(projectilePrefab, weapon.MuzzleTransform.position, Camera.main.transform.rotation);
-        projectile.Initialize(weapon.WeaponData.Damage, weapon.WeaponData.ImpactForce, explosionRadius, launchForce);       
+        projectile.Initialize(weapon.WeaponData.Damage, weapon.WeaponData.ImpactForce, explosionRadius, launchForce);
     }
 }

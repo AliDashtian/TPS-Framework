@@ -30,8 +30,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   WeaponAttachmentPositions:
-    InHandPos: {x: 0, y: 0, z: 0}
-    InHandRot: {x: 0, y: 0, z: 0}
+    InHandPos: {x: -0.0231, y: 0.099, z: 0.0338}
+    InHandRot: {x: -0.00004449324, y: -0.000060810977, z: 67.87242}
     InHolsterPos: {x: 0, y: 0, z: 0}
     InHolsterRot: {x: 0, y: 0, z: 0}
   OverrideController: {fileID: 22100000, guid: 9228e2baf0401bb4c8dab8a1a550aa9d, type: 2}
@@ -41,6 +41,8 @@ MonoBehaviour:
   WeaponSprite: {fileID: 0}
   FireSound: {fileID: 0}
   MuzzlePS: {fileID: 0}
+  DisableMeshIfNoAmmo: 1
   projectilePrefab: {fileID: 6140328357206681956, guid: 57852165d4c98f949ae463cf129e56b2, type: 3}
-  launchForce: 8
+  launchForce: 15
   explosionRadius: 8
+  ProjectileSpawnDelay: 200

@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator), typeof(WeaponInventory))]
@@ -24,7 +25,6 @@ public abstract class BaseCharacter : MonoBehaviour
     /// </summary>
     //public StateMachine StanceStateMachine { get; private set; }
 
-    //public ActionAimState AimState;
     public ActionAimFireState AimFireState;
     public ActionIdleState IdleState;
     public ActionReloadState ReloadState;
@@ -54,7 +54,6 @@ public abstract class BaseCharacter : MonoBehaviour
         ActionStateMachine = new StateMachine();
         //StanceStateMachine = new StateMachine();
 
-        //AimState = new ActionAimState(this, ActionStateMachine);
         AimFireState = new ActionAimFireState(this, ActionStateMachine);
         IdleState = new ActionIdleState(this, ActionStateMachine);
         ReloadState = new ActionReloadState(this, ActionStateMachine);

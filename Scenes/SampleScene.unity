@@ -1278,6 +1278,7 @@ GameObject:
   - component: {fileID: 412524313}
   - component: {fileID: 412524315}
   - component: {fileID: 412524316}
+  - component: {fileID: 412524317}
   - component: {fileID: 412524314}
   m_Layer: 0
   m_Name: Virtual Camera
@@ -1382,6 +1383,30 @@ MonoBehaviour:
     CameraRadius: 0.2
     DampingIntoCollision: 0
     DampingFromCollision: 2
+--- !u!114 &412524317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 412524311}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b2d199b96b516448144ab30fb26aed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineImpulseListener
+  ApplyAfter: 2
+  ChannelMask: 1
+  Gain: 1
+  Use2DDistance: 0
+  UseCameraSpace: 1
+  SignalCombinationMode: 0
+  ReactionSettings:
+    m_SecondaryNoise: {fileID: 0}
+    AmplitudeGain: 1
+    FrequencyGain: 1
+    Duration: 1
+    m_NoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &417418477
 GameObject:
   m_ObjectHideFlags: 0
@@ -3355,7 +3380,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5581777910173829429, guid: eeb3d06d654861d45804f7dee1ff25d6, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7227923026220833040, guid: eeb3d06d654861d45804f7dee1ff25d6, type: 3}
       propertyPath: m_LocalPosition.x

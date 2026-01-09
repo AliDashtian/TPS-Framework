@@ -1,13 +1,15 @@
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
     public WeaponSO WeaponData;
 
+    [HideInInspector]
     public int CurrentPouchAmmo;
-    public int CurrentMagAmmo;
 
-    public bool isFiring;
+    [HideInInspector]
+    public int CurrentMagAmmo;
 
     public Transform Target
     {
@@ -34,19 +36,23 @@ public class Weapon : MonoBehaviour
 
     private BaseCharacter _ownerCharacter;
     private AudioSource _audioSource;
+    private CinemachineImpulseSource _impulseSource;
+
+    private RecoilSystem _recoilSystem;
 
     private float _nextFireTime;
 
     private int _maxPouchAmmo;
     private int _magCapacity;
 
-    private bool _shouldApplyRecoil;
+    private bool _isFiring;
 
     private ParticleSystem _muzzlePS;
 
     private void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
+        _impulseSource = GetComponent<CinemachineImpulseSource>();
     }
 
     private void Start()
@@ -58,11 +64,19 @@ public class Weapon : MonoBehaviour
         CurrentMagAmmo = _magCapacity;
 
         _ownerCharacter = GetComponentInParent<BaseCharacter>();
+
+        if (WeaponData.ShakeProfile)
+            _impulseSource.ImpulseDefinition.RawSignal = WeaponData.ShakeProfile;
+
+        if (WeaponData.RecoilData != null)
+        {
+            _recoilSystem = new RecoilSystem(WeaponData.RecoilData);
+        }
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        if (WeaponData.FireType == WeaponFireType.Automatic && isFiring)
+        if (WeaponData.FireType == WeaponFireType.Automatic && _isFiring)
         {
             Fire();
         }
@@ -82,7 +96,7 @@ public class Weapon : MonoBehaviour
 
     public virtual void FireButtonPressed()
     {
-        isFiring = true;
+        _isFiring = true;
     }
 
     public virtual void FireButtonReleased()
@@ -92,7 +106,7 @@ public class Weapon : MonoBehaviour
             Fire();
         }
 
-        isFiring = false;
+        _isFiring = false;
     }
 
     public void Fire()
@@ -114,11 +128,21 @@ public class Weapon : MonoBehaviour
 
         if (Time.time >= _nextFireTime)
         {
-            _shouldApplyRecoil = true;
             _nextFireTime = Time.time + 1f / WeaponData.FireRate;
             WeaponData.Fire(this);
             PlayFireEffects();
             CurrentMagAmmo--;
+
+            if (_recoilSystem != null)
+            {
+                _recoilSystem.UpdateRecoilTarget();
+            }
+
+            // 3. Trigger Screen Shake
+            if (_impulseSource != null)
+            {
+                _impulseSource.GenerateImpulse(); // Triggers the shake event
+            }
         }
 
         // Turn off the mesh if we don't have ammo, used for throwables like Grenade
@@ -166,12 +190,9 @@ public class Weapon : MonoBehaviour
 
     public void ApplyRecoil(ref float yaw, ref float pitch)
     {
-        if (isFiring && _shouldApplyRecoil)
+        if (_recoilSystem != null)
         {
-            pitch -= Random.Range(12f, 14f) * Time.deltaTime; // up down
-            yaw -= Random.Range(-22f, 20f) * Time.deltaTime; // left right
-
-            _shouldApplyRecoil = false;
+            _recoilSystem.ApplyRecoil(ref yaw, ref pitch);
         }
     }
 

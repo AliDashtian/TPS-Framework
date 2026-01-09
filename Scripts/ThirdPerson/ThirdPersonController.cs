@@ -82,7 +82,7 @@ public class ThirdPersonController : MonoBehaviour
         _cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, BottomClamp, TopClamp);
 
         //Apply recoil
-        if (PlayerRuntimeSet.ActivePlayer.Object && PlayerRuntimeSet.ActivePlayer.Object.GetCurrentWeapon())
+        if (PlayerRuntimeSet.ActivePlayer.Object && PlayerRuntimeSet.ActivePlayer.Object.GetCurrentWeapon().WeaponData.RecoilData)
         {
             PlayerRuntimeSet.ActivePlayer.Object.GetCurrentWeapon().ApplyRecoil(ref _cinemachineTargetYaw, ref _cinemachineTargetPitch);
         }

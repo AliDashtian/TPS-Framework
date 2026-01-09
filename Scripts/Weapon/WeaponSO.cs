@@ -1,4 +1,5 @@
 using System;
+using Unity.Cinemachine;
 using UnityEngine;
 
 public abstract class WeaponSO : ScriptableObject
@@ -12,6 +13,8 @@ public abstract class WeaponSO : ScriptableObject
     public WeaponSocketTypes HolsterType;
 
     public PhysicalMaterialDataBaseSO PhysicalMaterialData;
+    public WeaponRecoilSO RecoilData;
+    public NoiseSettings ShakeProfile;
 
     public float Damage = 1;
     public float FireRate = 5;

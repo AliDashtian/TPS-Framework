@@ -17,6 +17,8 @@ MonoBehaviour:
   DamageType: 0
   HolsterType: 1
   PhysicalMaterialData: {fileID: 11400000, guid: eb494bbfd1c6c0e42baf2d898c76c242, type: 2}
+  RecoilData: {fileID: 11400000, guid: 572f196debb7313469a4457a1b1ad4af, type: 2}
+  ShakeProfile: {fileID: 11400000, guid: a8a953516789a6e4ca233916bd29927c, type: 2}
   Damage: 1
   FireRate: 5
   FireRange: 1000
@@ -41,3 +43,4 @@ MonoBehaviour:
   WeaponSprite: {fileID: 917937430, guid: beac135820b158349a26ab79bd2b1ec5, type: 3}
   FireSound: {fileID: 0}
   MuzzlePS: {fileID: 198000012944515248, guid: 9defeac88977c0d448aa4541073ee9e4, type: 3}
+  DisableMeshIfNoAmmo: 0

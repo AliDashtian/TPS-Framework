@@ -18,11 +18,14 @@ public abstract class WeaponSO : ScriptableObject
     public float Damage = 1;
     public float FireRate = 5;
     public float FireRange = 1000;
-    public float ZoomSpeed = 0.1f;
+    public float AimSensivity = 9;
     public float ReloadDuration = 2f;
     public float ImpactForce = 5f;
 
+    public float ZoomDuration = 0.1f;
     public int ZoomFOV = 40;
+    public float ZoomCamDistance = 2.6f;
+
     public int PouchCapacity = 90;
     public int MagCapacity = 30;
 

@@ -26,7 +26,18 @@ public class PlayerUI : MonoBehaviour
         if (ActiveCharacter.Object.GetCurrentWeapon() != null)
         {
             weaponImage.sprite = ActiveCharacter.Object.GetCurrentWeapon().WeaponData.WeaponSprite;
-            crosshairImage.sprite = ActiveCharacter.Object.GetCurrentWeapon().WeaponData.CrosshairSprite;
+
+            if (ActiveCharacter.Object.GetCurrentWeapon().WeaponData.CrosshairSprite != null)
+            {
+                crosshairImage.enabled = true;
+                crosshairImage.sprite = ActiveCharacter.Object.GetCurrentWeapon().WeaponData.CrosshairSprite;
+                crosshairImage.SetNativeSize();
+            }
+            else
+            {
+                crosshairImage.sprite = null;
+                crosshairImage.enabled = false;
+            }
         }
     }
 

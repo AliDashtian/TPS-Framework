@@ -11,8 +11,7 @@ public abstract class BaseCharacter : MonoBehaviour
 
     public Action OnReload;
     public Action OnWeaponSwapped;
-    //public Action<bool> OnWeaponFired;
-    public Action<bool> OnWeaponAimed;
+    public Action<bool> OnTriggerPulled;
 
     #region State Machine
 

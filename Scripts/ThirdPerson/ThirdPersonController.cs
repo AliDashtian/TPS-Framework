@@ -17,9 +17,9 @@ public class ThirdPersonController : MonoBehaviour
     [Tooltip("The Cinemachine Virtual Camera that follows the active character. (Optional but recommended)")]
     public CinemachineCamera CinemachineVCam;
 
-    [Tooltip("How far in degrees can you move the camera up")]
-    public float LookSensivity = 70.0f; 
-    
+    [Tooltip("Look sensivity in both axes")]
+    public float LookSensivity = 10.0f;
+
     [Tooltip("How far in degrees can you move the camera up")]
     public float TopClamp = 70.0f;
 
@@ -38,25 +38,35 @@ public class ThirdPersonController : MonoBehaviour
     [Tooltip("Camera's default FOV when not Zooming")]
     public int DefaultFOV = 60;
 
+    [Tooltip("Camera's default CameraDistance when not Zooming")]
+    public float DefaultCamDistance = 2.6f;
+
     [Tooltip("For locking the camera position on all axis")]
     public bool LockCameraPosition = false;
 
     private GameObject _cinemachineCameraTarget;
+    private CinemachineThirdPersonFollow _cinemachineThirdPersonFollow;
 
     private float _cinemachineTargetYaw;
     private float _cinemachineTargetPitch;
+
+    private float _currentLookSensivity;
 
     private const float _threshold = 0.01f;
 
     private void Start()
     {
+        _cinemachineThirdPersonFollow = CinemachineVCam.GetComponent<CinemachineThirdPersonFollow>();
+
         PlayerRuntimeSet.OnCharacterSwitched += ChangeFollowTarget;
         PlayerRuntimeSet.OnCharacterSwitched += ChangeCinemachineTarget;
+
+        _currentLookSensivity = LookSensivity;
 
         // Subscribe Zoom to all of the Players
         foreach (PlayerCharacter player in PlayerRuntimeSet.Items)
         {
-            player.OnWeaponAimed += Zoom;
+            player.OnTriggerPulled += Zoom;
         }
 
         ChangeFollowTarget();
@@ -73,8 +83,8 @@ public class ThirdPersonController : MonoBehaviour
         // if there is an input and camera position is not fixed
         if (lookInput.sqrMagnitude >= _threshold && !LockCameraPosition)
         {
-            _cinemachineTargetYaw += lookInput.x * LookSensivity * Time.deltaTime;
-            _cinemachineTargetPitch += lookInput.y * LookSensivity * Time.deltaTime;
+            _cinemachineTargetYaw += lookInput.x * _currentLookSensivity * Time.deltaTime;
+            _cinemachineTargetPitch += lookInput.y * _currentLookSensivity * Time.deltaTime;
         }
 
         // clamp our rotations so our values are limited 360 degrees
@@ -91,6 +101,11 @@ public class ThirdPersonController : MonoBehaviour
         _cinemachineCameraTarget.transform.rotation = Quaternion.Euler(_cinemachineTargetPitch + CameraAngleOverride, _cinemachineTargetYaw, 0.0f);
     }
 
+    void ChangeCurrentWeaponAim()
+    {
+
+    }
+
     private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
     {
         if (lfAngle < -360f) lfAngle += 360f;
@@ -104,20 +119,19 @@ public class ThirdPersonController : MonoBehaviour
 
         if (zoom)
         {
-            ChangeFOV(weaponData.ZoomFOV, weaponData.ZoomSpeed);
+            _currentLookSensivity = weaponData.AimSensivity;
+            StartCoroutine(ChangeFOVCoroutine(weaponData.ZoomFOV, weaponData.ZoomDuration));
+            StartCoroutine(ChangeCameraDistance(weaponData.ZoomCamDistance, weaponData.ZoomDuration));
         }
         else
         {
-            ChangeFOV(DefaultFOV, weaponData.ZoomSpeed);
+            _currentLookSensivity = LookSensivity;
+            StartCoroutine(ChangeFOVCoroutine(DefaultFOV, weaponData.ZoomDuration));
+            StartCoroutine(ChangeCameraDistance(DefaultCamDistance, weaponData.ZoomDuration));
         }
     }
 
-    private void ChangeFOV(int targetFOV, float duration)
-    {
-        StartCoroutine(ChangeFOVCoroutine(targetFOV, duration));
-    }
-
-    IEnumerator ChangeFOVCoroutine(int targetFOV, float duration)
+    IEnumerator ChangeFOVCoroutine(int newFOV, float duration)
     {
         float time = 0;
         float initFOV = CinemachineVCam.Lens.FieldOfView;
@@ -125,7 +139,21 @@ public class ThirdPersonController : MonoBehaviour
         while (time <= duration)
         {
             time += Time.deltaTime;
-            CinemachineVCam.Lens.FieldOfView = Mathf.Lerp(initFOV, targetFOV, time / duration);
+            CinemachineVCam.Lens.FieldOfView = Mathf.Lerp(initFOV, newFOV, time / duration);
+
+            yield return null;
+        }
+    }
+
+    IEnumerator ChangeCameraDistance(float newCamDistance, float duration)
+    {
+        float time = 0;
+        float initCamDist = _cinemachineThirdPersonFollow.CameraDistance;
+
+        while (time <= duration)
+        {
+            time += Time.deltaTime;
+            _cinemachineThirdPersonFollow.CameraDistance = Mathf.Lerp(initCamDist, newCamDistance, time / duration);
 
             yield return null;
         }

@@ -17,14 +17,16 @@ MonoBehaviour:
   DamageType: 0
   HolsterType: 1
   PhysicalMaterialData: {fileID: 11400000, guid: eb494bbfd1c6c0e42baf2d898c76c242, type: 2}
-  RecoilData: {fileID: 0}
-  Damage: 1
-  FireRate: 1
+  RecoilData: {fileID: 11400000, guid: 572f196debb7313469a4457a1b1ad4af, type: 2}
+  Damage: 2
+  FireRate: 5
   FireRange: 1000
-  ZoomSpeed: 0.1
+  AimSensivity: 8
   ReloadDuration: 2
   ImpactForce: 2
+  ZoomDuration: 0.1
   ZoomFOV: 40
+  ZoomCamDistance: 2.6
   PouchCapacity: 90
   MagCapacity: 30
   ShootableLayers:
@@ -38,7 +40,7 @@ MonoBehaviour:
   OverrideController: {fileID: 22100000, guid: f273fb41022b0b740a3f264c441c05e4, type: 2}
   EquipAnimName: EquipRifle
   UnequipAnimName: UnequipRifle
-  CrosshairSprite: {fileID: 0}
+  CrosshairSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   WeaponSprite: {fileID: 917937430, guid: beac135820b158349a26ab79bd2b1ec5, type: 3}
   FireSound: {fileID: 0}
   MuzzlePS: {fileID: 198000012944515248, guid: 9defeac88977c0d448aa4541073ee9e4, type: 3}

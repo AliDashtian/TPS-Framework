@@ -1,15 +1,20 @@
+using System;
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Weapon : MonoBehaviour
 {
     public WeaponSO WeaponData;
 
-    [HideInInspector]
-    public int CurrentPouchAmmo;
+    [Tooltip("The transform representing the weapon's muzzle for spawning effects.")]
+    [SerializeField]
+    private Transform _muzzleTransform;
 
-    [HideInInspector]
-    public int CurrentMagAmmo;
+    public Action<bool> OnAimed;
+
+    public int CurrentPouchAmmo {get; private set;}
+    public int CurrentMagAmmo { get; private set;}
 
     public Transform Target
     {
@@ -29,10 +34,6 @@ public class Weapon : MonoBehaviour
     private Transform _target;
 
     public Transform MuzzleTransform => _muzzleTransform;
-
-    [Tooltip("The transform representing the weapon's muzzle for spawning effects.")]
-    [SerializeField]
-    private Transform _muzzleTransform;
 
     private BaseCharacter _ownerCharacter;
     private AudioSource _audioSource;
@@ -57,11 +58,7 @@ public class Weapon : MonoBehaviour
 
     private void Start()
     {
-        _maxPouchAmmo = WeaponData.PouchCapacity;
-        _magCapacity = WeaponData.MagCapacity;
-
-        CurrentPouchAmmo = _maxPouchAmmo;
-        CurrentMagAmmo = _magCapacity;
+        SetupAmmo();
 
         _ownerCharacter = GetComponentInParent<BaseCharacter>();
 
@@ -146,6 +143,15 @@ public class Weapon : MonoBehaviour
         {
             SetMeshEnabled(false);
         }
+    }
+
+    private void SetupAmmo()
+    {
+        _maxPouchAmmo = WeaponData.PouchCapacity;
+        _magCapacity = WeaponData.MagCapacity;
+
+        CurrentPouchAmmo = _maxPouchAmmo;
+        CurrentMagAmmo = _magCapacity;
     }
 
     public void Reload()

@@ -1,4 +1,3 @@
-
 using Cysharp.Threading.Tasks;
 
 /// <summary>
@@ -7,19 +6,22 @@ using Cysharp.Threading.Tasks;
 /// </summary>
 public class ActionAimFireState : CharacterState
 {
+    private Weapon _currentWeapon = null;
     public ActionAimFireState(BaseCharacter baseCharacter, StateMachine stateMachine) : base(baseCharacter, stateMachine) { }
 
     public override void Enter()
     {
-        baseCharacter.GetCurrentWeapon().OnFire(true);
+        _currentWeapon = baseCharacter.GetCurrentWeapon();
+        _currentWeapon.OnFire(true);
         baseCharacter.Animator.SetBool(AnimationIDs.IsAiming, true);
-        baseCharacter.OnWeaponAimed?.Invoke(true);
+        _currentWeapon.OnAimed?.Invoke(true);
+        baseCharacter.OnTriggerPulled?.Invoke(true);
     }
 
     public override void Update()
     {
         // Exit the fire state if we ran out of ammo while firing
-        if (!baseCharacter.GetCurrentWeapon().HasAmmo())
+        if (!_currentWeapon.HasAmmo())
         {
             stateMachine.ChangeState(baseCharacter.IdleState);
         }
@@ -27,10 +29,10 @@ public class ActionAimFireState : CharacterState
 
     public override void Exit()
     {
-        baseCharacter.GetCurrentWeapon().OnFire(false);
-        if (baseCharacter.GetCurrentWeapon().WeaponData.FireType == WeaponFireType.SingleShot)
+        _currentWeapon.OnFire(false);
+        if (_currentWeapon.WeaponData.FireType == WeaponFireType.SingleShot)
         {
-            _ = ExitWithDelay(300);
+            _ = ExitWithDelay(600);
         }
         else
         {
@@ -43,6 +45,7 @@ public class ActionAimFireState : CharacterState
         await UniTask.Delay(delay);
 
         baseCharacter.Animator.SetBool(AnimationIDs.IsAiming, false);
-        baseCharacter.OnWeaponAimed?.Invoke(false);
+        _currentWeapon.OnAimed?.Invoke(false);
+        baseCharacter.OnTriggerPulled?.Invoke(false);
     }
 }

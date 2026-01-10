@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: BasicLoadout
   m_EditorClassIdentifier: Assembly-CSharp::WeaponInventory
   MainWeapon: {fileID: 4730224004658303182, guid: df7a851af67fff84f9f0dd9b82041cbb, type: 3}
-  SecondaryWeapon: {fileID: 5561163634679573629, guid: 304b829f4255d5847bdba8ef49f8a907, type: 3}
+  SecondaryWeapon: {fileID: 7503039247611206475, guid: ef8fe8d7f3d89fe45b2784329499f7ef, type: 3}

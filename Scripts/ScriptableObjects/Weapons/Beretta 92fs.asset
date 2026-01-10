@@ -18,14 +18,15 @@ MonoBehaviour:
   HolsterType: 2
   PhysicalMaterialData: {fileID: 11400000, guid: eb494bbfd1c6c0e42baf2d898c76c242, type: 2}
   RecoilData: {fileID: 11400000, guid: 478fd1827f76d434894bb592cd4481ba, type: 2}
-  ShakeProfile: {fileID: 11400000, guid: a8a953516789a6e4ca233916bd29927c, type: 2}
   Damage: 1
   FireRate: 1.5
   FireRange: 1000
-  ZoomSpeed: 0.1
+  AimSensivity: 9
   ReloadDuration: 2
   ImpactForce: 5
+  ZoomSpeed: 0.1
   ZoomFOV: 40
+  ZoomCamDistance: 2.6
   PouchCapacity: 90
   MagCapacity: 30
   ShootableLayers:

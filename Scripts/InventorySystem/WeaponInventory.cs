@@ -31,7 +31,7 @@ public class WeaponInventory : MonoBehaviour
         if (WeaponLoadout.SecondaryWeapon != null)
         {
             _secondaryWeapon = Instantiate(WeaponLoadout.SecondaryWeapon);
-            AttachWeaponToSocket(_secondaryWeapon, WeaponSocketTypes.Pistol);
+            AttachWeaponToSocket(_secondaryWeapon, _secondaryWeapon.WeaponData.HolsterType);
         }
 
         CurrentWeapon = _mainWeapon;

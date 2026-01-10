@@ -1,3 +1,4 @@
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class Explosive : MonoBehaviour
@@ -9,14 +10,18 @@ public class Explosive : MonoBehaviour
 
     [SerializeField] private ParticleSystem _impactEffect;
 
+    private CinemachineImpulseSource _impulseSource;
+
     private bool _hasExploded;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         if (TryGetComponent(out Health health))
         {
             health.OnDeath += React;
         }
+
+        _impulseSource = GetComponent<CinemachineImpulseSource>();
     }
 
     public virtual void React()
@@ -60,6 +65,11 @@ public class Explosive : MonoBehaviour
         {
             Instantiate(_impactEffect.gameObject, transform.position, Quaternion.identity);
         }
+
+        if (_impulseSource != null)
+        {
+            _impulseSource.GenerateImpulse();
+        }    
     }
 
     private void OnDrawGizmos()

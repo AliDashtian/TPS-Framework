@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a27e9b20b1357a449e59f2688c42fb2, type: 3}
+  m_Script: {fileID: 11500000, guid: 1bda9ca44b183f6498362a3ba3c1db13, type: 3}
   m_Name: Rifle Recoil
   m_EditorClassIdentifier: Assembly-CSharp::WeaponRecoilSO
-  RecoilKickX: {x: -1, y: 1}
-  RecoilKickY: {x: 0.3, y: 0.7}
-  RecoilSnappiness: 20
+  RecoilKickX: {x: -0.5, y: 0.5}
+  RecoilKickY: {x: 0, y: 0.5}
+  RecoilSnappiness: 15
   RecoilReturnSpeed: 10
   RecoilRecoveryDelay: 0.2

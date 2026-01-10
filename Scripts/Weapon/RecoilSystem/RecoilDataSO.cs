@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "RecoilSettings", menuName = "Scriptable Objects/Weapon/Recoil")]
-public class WeaponRecoilSO : ScriptableObject
+public class RecoilDataSO : ScriptableObject
 {
     [Header("Recoil Settings")]
     // Use X and Y to define the Min and Max kick strength

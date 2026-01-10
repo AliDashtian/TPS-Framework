@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class RecoilSystem
 {
-    private WeaponRecoilSO _data;
+    private RecoilDataSO _data;
     private Vector2 _currentRecoil;
     private Vector2 _targetRecoil;
     private float _lastFireTime;
 
-    public RecoilSystem(WeaponRecoilSO data)
+    public RecoilSystem(RecoilDataSO data)
     {
         _data = data;
     }
@@ -32,16 +32,16 @@ public class RecoilSystem
     {
         if (_data == null) return;
 
-        // 1. THE FIX: Only start returning if we haven't fired recently
+        // Only start returning if we haven't fired recently
         if (Time.time > _lastFireTime + _data.RecoilRecoveryDelay)
         {
             _targetRecoil = Vector2.Lerp(_targetRecoil, Vector2.zero, _data.RecoilReturnSpeed * Time.deltaTime);
         }
 
-        // 2. Snap Current to Target
+        // Snap Current to Target
         Vector2 wantedRecoil = Vector2.Lerp(_currentRecoil, _targetRecoil, _data.RecoilSnappiness * Time.deltaTime);
 
-        // 3. Apply Delta
+        // Apply Delta
         Vector2 delta = wantedRecoil - _currentRecoil;
         _currentRecoil = wantedRecoil;
 

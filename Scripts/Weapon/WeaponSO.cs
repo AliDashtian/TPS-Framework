@@ -13,8 +13,7 @@ public abstract class WeaponSO : ScriptableObject
     public WeaponSocketTypes HolsterType;
 
     public PhysicalMaterialDataBaseSO PhysicalMaterialData;
-    public WeaponRecoilSO RecoilData;
-    public NoiseSettings ShakeProfile;
+    public RecoilDataSO RecoilData;
 
     public float Damage = 1;
     public float FireRate = 5;

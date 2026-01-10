@@ -65,9 +65,6 @@ public class Weapon : MonoBehaviour
 
         _ownerCharacter = GetComponentInParent<BaseCharacter>();
 
-        if (WeaponData.ShakeProfile)
-            _impulseSource.ImpulseDefinition.RawSignal = WeaponData.ShakeProfile;
-
         if (WeaponData.RecoilData != null)
         {
             _recoilSystem = new RecoilSystem(WeaponData.RecoilData);
@@ -138,10 +135,9 @@ public class Weapon : MonoBehaviour
                 _recoilSystem.UpdateRecoilTarget();
             }
 
-            // 3. Trigger Screen Shake
             if (_impulseSource != null)
             {
-                _impulseSource.GenerateImpulse(); // Triggers the shake event
+                _impulseSource.GenerateImpulse();
             }
         }
 

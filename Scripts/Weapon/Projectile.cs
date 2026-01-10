@@ -11,8 +11,10 @@ public class Projectile : Explosive
 
     private Rigidbody rb;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         rb = GetComponent<Rigidbody>();
     }
 

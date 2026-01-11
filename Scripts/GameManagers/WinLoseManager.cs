@@ -1,8 +1,5 @@
-using Cysharp.Threading.Tasks;
-using System;
+using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.SceneManagement;
 
 public class WinLoseManager : MonoBehaviour
 {
@@ -11,6 +8,10 @@ public class WinLoseManager : MonoBehaviour
 
     public GameEvent OnGameWon;
     public GameEvent OnGameLost;
+
+    [Tooltip("Delay in miliseconds to show Win or Lose popups")]
+    [SerializeField]
+    private int _popupDelay = 500;
 
     private bool _hasWon = false;
     private bool _hasLost = false;
@@ -29,38 +30,28 @@ public class WinLoseManager : MonoBehaviour
         EnemySet.OnSetEmptied -= Win;
     }
 
-    public void Win()
+    public async void Win()
     {
         if (_hasWon) return;
+
+        await Task.Delay(_popupDelay);
 
         OnGameWon.Raise();
         _hasWon = true;
     }
 
-    public void Lose()
+    public async void Lose()
     {
         if (_hasLost) return;
 
+        await Task.Delay(_popupDelay);
+
         OnGameLost.Raise();
-        Time.timeScale = 0.6f;
         _hasLost = true;
     }
 
     public void Revive()
     {
         _hasLost = false;
-    }
-
-    public async UniTask LoadSceneAsync(int index)
-    {
-        AsyncOperation operation = SceneManager.LoadSceneAsync(index);
-
-        while (!operation.isDone)
-        {
-            float progress = Mathf.Clamp01(operation.progress / 0.9f);
-            //LoadingSlider.value = progress;
-
-            await UniTask.Yield();
-        }
     }
 }

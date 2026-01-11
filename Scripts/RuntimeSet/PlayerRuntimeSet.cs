@@ -26,6 +26,8 @@ public class PlayerRuntimeSet : RuntimeSet<PlayerCharacter>
 
     private void MapPlayerSet()
     {
+        _PlayerSet.Clear();
+
         foreach (PlayerCharacter player in Items)
         {
             _PlayerSet.Add(player.CharacterData.Id, player);

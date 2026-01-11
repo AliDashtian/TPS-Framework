@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d7458339a888004f99954d28ce84818, type: 3}
-  m_Name: GrenadeWeapon
+  m_Name: RocketLauncher
   m_EditorClassIdentifier: 
-  Name: Grenade
+  Name: RocketLauncher
   FireType: 0
   DamageType: 1
-  HolsterType: 2
+  HolsterType: 1
   PhysicalMaterialData: {fileID: 11400000, guid: eb494bbfd1c6c0e42baf2d898c76c242, type: 2}
-  RecoilData: {fileID: 0}
+  RecoilData: {fileID: 11400000, guid: 478fd1827f76d434894bb592cd4481ba, type: 2}
   Damage: 100
   FireRate: 1
   FireRange: 1000
@@ -33,19 +33,19 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   WeaponAttachmentPositions:
-    InHandPos: {x: -0.0231, y: 0.099, z: 0.0338}
-    InHandRot: {x: -0.00004449324, y: -0.000060810977, z: 67.87242}
+    InHandPos: {x: -0.128, y: -0.033, z: 0.014}
+    InHandRot: {x: 351.49097, y: 269.99982, z: 89.999756}
     InHolsterPos: {x: 0, y: 0, z: 0}
     InHolsterRot: {x: 0, y: 0, z: 0}
-  OverrideController: {fileID: 22100000, guid: 9228e2baf0401bb4c8dab8a1a550aa9d, type: 2}
-  EquipAnimName: EquipPistol
-  UnequipAnimName: UnequipPistol
-  CrosshairSprite: {fileID: 0}
+  OverrideController: {fileID: 22100000, guid: f273fb41022b0b740a3f264c441c05e4, type: 2}
+  EquipAnimName: EquipRifle
+  UnequipAnimName: UnequipRifle
+  CrosshairSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   WeaponSprite: {fileID: 0}
   FireSound: {fileID: 0}
   MuzzlePS: {fileID: 0}
-  DisableMeshIfNoAmmo: 1
-  projectilePrefab: {fileID: 6140328357206681956, guid: 57852165d4c98f949ae463cf129e56b2, type: 3}
-  launchForce: 15
+  DisableMeshIfNoAmmo: 0
+  projectilePrefab: {fileID: 6289649001904943691, guid: 57e33aab37804db448e2c216ff89a8c8, type: 3}
+  launchForce: 20
   explosionRadius: 4
-  ProjectileSpawnDelay: 200
+  ProjectileSpawnDelay: 0

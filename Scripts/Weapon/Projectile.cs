@@ -27,11 +27,11 @@ public class Projectile : Explosive
         _impactForce = impactForce;
         _explosionRadius = explosionRadius;
 
-        gameObject.transform.forward = Camera.main.transform.forward;
+        //gameObject.transform.forward = Camera.main.transform.forward;
 
         LaunchProjectile(launchForce);
 
-        // react after delay duration
+        // React after a delay
         Invoke(nameof(React), _reactDelay);
     }
 
@@ -41,21 +41,23 @@ public class Projectile : Explosive
         Vector3 targetPoint;
 
         // Raycast from the center of the camera
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hit, 100f))
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hit, 500f))
         {
             targetPoint = hit.point;
         }
         else
         {
             // If we look at the sky, aim at a point far away
-            targetPoint = Camera.main.transform.position + Camera.main.transform.forward * 100f;
+            targetPoint = Camera.main.transform.position + Camera.main.transform.forward * 500f;
         }
 
         // Calculate direction from the THROW POINT to the TARGET POINT
         Vector3 direction = (targetPoint - transform.position).normalized;
 
+        transform.forward = direction;
+
         // Add force in that specific direction
-        Vector3 forceToAdd = direction * launchForce + transform.up * _launchUpwardForce;
+        Vector3 forceToAdd = direction * launchForce /*+ transform.up * _launchUpwardForce*/;
 
         rb.AddForce(forceToAdd, ForceMode.Impulse);
     }
@@ -64,6 +66,6 @@ public class Projectile : Explosive
     {
         if (!_destroyOnImpact) return;
 
-        Destroy(gameObject);
+        React();
     }
 }

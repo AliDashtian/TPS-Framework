@@ -2030,9 +2030,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Weapon
   WeaponData: {fileID: 11400000, guid: 939cbe18a766be44781efe2dc23f9fdb, type: 2}
-  CurrentPouchAmmo: 0
-  CurrentMagAmmo: 0
-  _muzzleTransform: {fileID: 0}
+  _muzzleTransform: {fileID: 6458840920298068701}
 --- !u!114 &2144956684147891039
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.TextCore.Text;
 
 public class ActionReloadState : CharacterState
 {
@@ -11,6 +10,7 @@ public class ActionReloadState : CharacterState
     {
         _reloadDuration = baseCharacter.GetCurrentWeapon().WeaponData.ReloadDuration;
         baseCharacter.Animator.SetBool(AnimationIDs.IsReloading, true);
+        AudioManager.Instance.PlaySound(baseCharacter.GetCurrentWeapon().WeaponData.ReloadSound, baseCharacter.transform.position);
         baseCharacter.OnReload?.Invoke();
     }
 

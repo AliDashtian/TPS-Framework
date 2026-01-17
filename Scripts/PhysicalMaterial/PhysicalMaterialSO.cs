@@ -9,5 +9,5 @@ public class PhysicalMaterialSO : ScriptableObject
     public LayerMask Layer;
 
     public ParticleSystem hitPS;
-    public AudioClip hitSound;
+    public SoundSO hitSound;
 }

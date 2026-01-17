@@ -17,4 +17,4 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   hitPS: {fileID: 19800010, guid: b69189a730299704681c21e6ffff2451, type: 3}
-  hitSound: {fileID: 8300000, guid: 72f526a6a9890f643a88e85a61c86c8a, type: 3}
+  hitSound: {fileID: 11400000, guid: 4eddb0323b1addf4da58d7c259a85bbf, type: 2}

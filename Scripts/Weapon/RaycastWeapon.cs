@@ -10,7 +10,7 @@ public class RaycastWeapon : WeaponSO
             Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * weapon.WeaponData.FireRange, Color.red, 2f);
             Debug.DrawRay(hit.point, hit.normal * 5, Color.blue, 4f);
 
-            PhysicalMaterialData.PlayParticleAndSoundByLayer(hit.transform.gameObject.layer, hit);
+            PhysicalMaterialData.HandleImpact(hit);
             AddImpactForce(hit, weapon.WeaponData);
 
             if (hit.transform.TryGetComponent(out IDamageable damageable))

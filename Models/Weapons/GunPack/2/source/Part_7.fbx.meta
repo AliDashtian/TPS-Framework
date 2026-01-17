@@ -13,7 +13,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Palet
-    second: {fileID: 2100000, guid: c81264bdb9b31fc4d80bb684e3a64c4b, type: 2}
+    second: {fileID: 2100000, guid: 48ff8f9cdbf4d0344bb19af54be64492, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule

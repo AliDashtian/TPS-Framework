@@ -17,13 +17,16 @@ MonoBehaviour:
   DamageType: 0
   HolsterType: 1
   PhysicalMaterialData: {fileID: 0}
+  RecoilData: {fileID: 0}
   Damage: 1
   FireRate: 5
   FireRange: 1000
-  ZoomSpeed: 0.1
+  AimSensivity: 9
   ReloadDuration: 2
   ImpactForce: 5
+  ZoomDuration: 0.1
   ZoomFOV: 40
+  ZoomCamDistance: 2.6
   PouchCapacity: 90
   MagCapacity: 30
   ShootableLayers:
@@ -39,5 +42,7 @@ MonoBehaviour:
   UnequipAnimName: 
   CrosshairSprite: {fileID: 0}
   WeaponSprite: {fileID: 0}
-  FireSound: {fileID: 0}
+  FireSound: {fileID: 11400000, guid: 4eddb0323b1addf4da58d7c259a85bbf, type: 2}
+  ReloadSound: {fileID: 0}
   MuzzlePS: {fileID: 198000012944515248, guid: 9defeac88977c0d448aa4541073ee9e4, type: 3}
+  DisableMeshIfNoAmmo: 0

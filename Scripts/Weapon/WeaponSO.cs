@@ -41,7 +41,8 @@ public abstract class WeaponSO : ScriptableObject
     public Sprite CrosshairSprite;
     public Sprite WeaponSprite;
 
-    public AudioClip FireSound;
+    public SoundSO FireSound;
+    public SoundSO ReloadSound;
     public ParticleSystem MuzzlePS;
 
     public bool DisableMeshIfNoAmmo;

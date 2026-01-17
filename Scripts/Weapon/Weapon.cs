@@ -12,6 +12,7 @@ public class Weapon : MonoBehaviour
     private Transform _muzzleTransform;
 
     public Action<bool> OnAimed;
+    public Action OnWeaponFired;
 
     public int CurrentPouchAmmo {get; private set;}
     public int CurrentMagAmmo { get; private set;}
@@ -36,7 +37,6 @@ public class Weapon : MonoBehaviour
     public Transform MuzzleTransform => _muzzleTransform;
 
     private BaseCharacter _ownerCharacter;
-    private AudioSource _audioSource;
     private CinemachineImpulseSource _impulseSource;
 
     private RecoilSystem _recoilSystem;
@@ -52,7 +52,6 @@ public class Weapon : MonoBehaviour
 
     private void Awake()
     {
-        _audioSource = GetComponent<AudioSource>();
         _impulseSource = GetComponent<CinemachineImpulseSource>();
     }
 
@@ -125,6 +124,7 @@ public class Weapon : MonoBehaviour
             _nextFireTime = Time.time + 1f / WeaponData.FireRate;
             WeaponData.Fire(this);
             PlayFireEffects();
+            OnWeaponFired?.Invoke();
             CurrentMagAmmo--;
 
             if (_recoilSystem != null)
@@ -172,20 +172,12 @@ public class Weapon : MonoBehaviour
 
     public void PlayFireEffects()
     {
-        if (WeaponData.MuzzlePS != null)
-        {
-            // Instantiate the muzzle flash at the muzzle's position and orientation
-            if (_muzzlePS == null)
-            {
-                _muzzlePS = Instantiate(WeaponData.MuzzlePS, _muzzleTransform.position, _muzzleTransform.rotation, _muzzleTransform);
-            }
-            _muzzlePS.Play();
-        }
+        VfxManager.Instance.PlayVfx(WeaponData.MuzzlePS, _muzzleTransform.position, _muzzleTransform.rotation);
 
-        if (WeaponData.FireSound != null && _audioSource != null)
-        {
-            _audioSource.PlayOneShot(WeaponData.FireSound);
-        }
+        // Audio channel way
+        //WeaponData.SfxChannel?.Play3DSound(WeaponData.FireSound, transform.position);
+        // singleton way
+        AudioManager.Instance.PlaySound(WeaponData.FireSound, transform.position);
 
         _ownerCharacter.Animator.SetTrigger(AnimationIDs.Fire);
     }

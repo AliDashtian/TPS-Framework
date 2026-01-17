@@ -42,6 +42,8 @@ MonoBehaviour:
   UnequipAnimName: UnequipRifle
   CrosshairSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   WeaponSprite: {fileID: 917937430, guid: beac135820b158349a26ab79bd2b1ec5, type: 3}
-  FireSound: {fileID: 0}
-  MuzzlePS: {fileID: 198000012944515248, guid: 9defeac88977c0d448aa4541073ee9e4, type: 3}
+  SfxChannel: {fileID: 11400000, guid: 7697206292501e648a8322344d0ca4e5, type: 2}
+  FireSound: {fileID: 11400000, guid: 4eddb0323b1addf4da58d7c259a85bbf, type: 2}
+  ReloadSound: {fileID: 8300000, guid: 234930f2b96f94643b89ae14e6dba5a6, type: 3}
+  MuzzlePS: {fileID: 19800002, guid: 14ca6e2b0a551be4c8071e897143d088, type: 3}
   DisableMeshIfNoAmmo: 0

@@ -24,7 +24,7 @@ MonoBehaviour:
   AimSensivity: 9
   ReloadDuration: 2
   ImpactForce: 5
-  ZoomSpeed: 0.1
+  ZoomDuration: 0.1
   ZoomFOV: 40
   ZoomCamDistance: 2.6
   PouchCapacity: 90
@@ -43,5 +43,5 @@ MonoBehaviour:
   CrosshairSprite: {fileID: 0}
   WeaponSprite: {fileID: 0}
   FireSound: {fileID: 0}
-  MuzzlePS: {fileID: 0}
+  MuzzlePS: {fileID: 19800004, guid: 5b3b6337d372a444e82d7da3a83990dd, type: 3}
   DisableMeshIfNoAmmo: 0

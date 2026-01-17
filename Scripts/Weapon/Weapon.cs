@@ -14,8 +14,10 @@ public class Weapon : MonoBehaviour
     public Action<bool> OnAimed;
     public Action OnWeaponFired;
 
+    public Transform MuzzleTransform => _muzzleTransform;
     public int CurrentPouchAmmo {get; private set;}
     public int CurrentMagAmmo { get; private set;}
+    public BaseCharacter OwnerCharacter { get; private set; }
 
     public Transform Target
     {
@@ -34,11 +36,6 @@ public class Weapon : MonoBehaviour
 
     private Transform _target;
 
-    public Transform MuzzleTransform => _muzzleTransform;
-
-    private BaseCharacter _ownerCharacter;
-    private CinemachineImpulseSource _impulseSource;
-
     private RecoilSystem _recoilSystem;
 
     private float _nextFireTime;
@@ -48,18 +45,11 @@ public class Weapon : MonoBehaviour
 
     private bool _isFiring;
 
-    private ParticleSystem _muzzlePS;
-
-    private void Awake()
-    {
-        _impulseSource = GetComponent<CinemachineImpulseSource>();
-    }
-
     private void Start()
     {
         SetupAmmo();
 
-        _ownerCharacter = GetComponentInParent<BaseCharacter>();
+        OwnerCharacter = GetComponentInParent<BaseCharacter>();
 
         if (WeaponData.RecoilData != null)
         {
@@ -123,19 +113,13 @@ public class Weapon : MonoBehaviour
         {
             _nextFireTime = Time.time + 1f / WeaponData.FireRate;
             WeaponData.Fire(this);
-            PlayFireEffects();
             OnWeaponFired?.Invoke();
             CurrentMagAmmo--;
 
             if (_recoilSystem != null)
             {
                 _recoilSystem.UpdateRecoilTarget();
-            }
-
-            if (_impulseSource != null)
-            {
-                _impulseSource.GenerateImpulse();
-            }
+            }            
         }
 
         // Turn off the mesh if we don't have ammo, used for throwables like Grenade
@@ -168,18 +152,6 @@ public class Weapon : MonoBehaviour
             CurrentMagAmmo += CurrentPouchAmmo;
             CurrentPouchAmmo = 0;
         }
-    }
-
-    public void PlayFireEffects()
-    {
-        VfxManager.Instance.PlayVfx(WeaponData.MuzzlePS, _muzzleTransform.position, _muzzleTransform.rotation);
-
-        // Audio channel way
-        //WeaponData.SfxChannel?.Play3DSound(WeaponData.FireSound, transform.position);
-        // singleton way
-        AudioManager.Instance.PlaySound(WeaponData.FireSound, transform.position);
-
-        _ownerCharacter.Animator.SetTrigger(AnimationIDs.Fire);
     }
 
     public void ApplyRecoil(ref float yaw, ref float pitch)

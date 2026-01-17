@@ -41,6 +41,9 @@ public abstract class WeaponSO : ScriptableObject
     public Sprite CrosshairSprite;
     public Sprite WeaponSprite;
 
+    public AudioEventChannel SfxChannel;
+    public VfxEventChannel VfxChannel;
+
     public SoundSO FireSound;
     public SoundSO ReloadSound;
     public ParticleSystem MuzzlePS;
